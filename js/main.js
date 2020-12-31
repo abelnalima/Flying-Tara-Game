@@ -8,18 +8,52 @@ function start() {
 
     /* Principais variaves do jogo */
     var jogo = {};
+    var TECLA = {
+        W: 87,
+        S: 83,
+        D: 68
+    }
+
+    jogo.pressionou = [];
+
+    /* Verifica se o jogador pressionou alguma tecla */
+    $(document).keydown(function(e) {
+        jogo.pressionou[e.which] = true;
+    });
+
+    $(document).keyup(function(e) {
+        jogo.pressionou[e.which] = false;
+    });
 
     /* Game Loop */
     jogo.timer = setInterval(loop, 30);
 
     function loop() {
         moveFundo();
+        moveJogador();
     }
 
     /* Função que movimenta o Background */
     function moveFundo() {
         esquerda = parseInt($("#fundoGame").css("background-position")); //Pega o valor da posição atual do background
         $("#fundoGame").css("background-position", esquerda-2); //atualiza a posição 1 pixel para a esquerda
+    }
+
+    function moveJogador() {
+        /* Pega o valor do top e diminui em 10px */
+        if (jogo.pressionou[TECLA.W]) {
+            var topo = parseInt($("#jogador").css("top"));
+            $("#jogador").css("top", topo-10);
+        }
+
+        if (jogo.pressionou[TECLA.S]) {
+            var topo = parseInt($("#jogador").css("top"));
+            $("#jogador").css("top", topo+10);
+        }
+
+        if (jogo.pressionou[TECLA.D]) {
+            //Funcao Disparo
+        }
     }
 
 }
