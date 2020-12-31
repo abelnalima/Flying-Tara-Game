@@ -8,6 +8,8 @@ function start() {
 
     /* Principais variaves do jogo */
     var jogo = {};
+    var vel_Inimigo1 = 7;
+    var posY_Inimigo1 = parseInt(Math.random() * 334);
     var TECLA = {
         W: 87,
         S: 83,
@@ -31,6 +33,7 @@ function start() {
     function loop() {
         moveFundo();
         moveJogador();
+        moveInimigo1();
     }
 
     /* Função que movimenta o Background */
@@ -61,6 +64,18 @@ function start() {
 
         if (jogo.pressionou[TECLA.D]) {
             //Funcao Disparo
+        }
+    }
+
+    function moveInimigo1() {
+        posX_Inimigo1 =  parseInt($("#inimigo1").css("left"));
+        $("#inimigo1").css("left", posX_Inimigo1 - vel_Inimigo1);
+        $("#inimigo1").css("top", posY_Inimigo1);
+
+        if (posX_Inimigo1 <= 0) {
+            posY_Inimigo1 = parseInt(Math.random() * 334);
+            $("#inimigo1").css("left", 694);
+            $("#inimigo1").css("top", posY_Inimigo1);
         }
     }
 
