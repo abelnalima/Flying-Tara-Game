@@ -34,6 +34,8 @@ function start() {
         moveFundo();
         moveJogador();
         moveInimigo1();
+        moveInimigo2();
+        moveAmigo();
     }
 
     /* Função que movimenta o Background */
@@ -76,6 +78,24 @@ function start() {
             posY_Inimigo1 = parseInt(Math.random() * 334);
             $("#inimigo1").css("left", 694);
             $("#inimigo1").css("top", posY_Inimigo1);
+        }
+    }
+
+    function moveInimigo2() {
+        posX_Inimigo2 = parseInt($("#inimigo2").css("left"));
+        $("#inimigo2").css("left", posX_Inimigo2 - 3);
+
+        if (posX_Inimigo2 <= 0) {
+            $("#inimigo2").css("left", 775);
+        }
+    }
+
+    function moveAmigo() {
+        posX_Amigo = parseInt($("#amigo").css("left"));
+        $("#amigo").css("left", posX_Amigo + 1);
+
+        if (posX_Amigo >= 906) {
+            $("#amigo").css("left", 0);
         }
     }
 
