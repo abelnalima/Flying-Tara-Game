@@ -77,6 +77,13 @@ body {
     background-image: url(../imgs/amigo.png);
 }
 
+#disparo {
+    width: 50px;
+    height: 8px;
+    position: absolute;
+    background-image: url(../imgs/disparo.png);
+}
+
 /* ANIMATIONS */
 /*CSS3*/
 

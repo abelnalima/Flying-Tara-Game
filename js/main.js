@@ -8,6 +8,7 @@ function start() {
 
     /* Principais variaves do jogo */
     var jogo = {};
+    var podeAtirar = true;
     var vel_Inimigo1 = 7;
     var posY_Inimigo1 = parseInt(Math.random() * 334);
     var TECLA = {
@@ -65,7 +66,7 @@ function start() {
         }
 
         if (jogo.pressionou[TECLA.D]) {
-            //Funcao Disparo
+            disparo();
         }
     }
 
@@ -96,6 +97,35 @@ function start() {
 
         if (posX_Amigo >= 906) {
             $("#amigo").css("left", 0);
+        }
+    }
+
+    function disparo() {
+        if (podeAtirar == true) {
+            podeAtirar = false;
+
+            posY_Jogador = parseInt($("#jogador").css("top"));
+            posX_Jogador = parseInt($("#jogador").css("left"));
+            posX_Disparo = posX_Jogador + 190;
+            posY_Disparo = posY_Jogador + 37;
+
+            $("#fundoGame").append("<div id='disparo'></div>"); //cria a div.disparo dentro de fundoGame
+            $("#disparo").css("top", posY_Disparo);
+            $("#disparo").css("left", posX_Disparo);
+
+            var tempoDisparo = window.setInterval(executaDisparo, 30);
+        }
+
+        function executaDisparo() {
+            posX_Disparo = parseInt($("#disparo").css("left"));
+            $("#disparo").css("left", posX_Disparo + 15);
+
+            if (posX_Disparo > 900) {
+                window.clearInterval(tempoDisparo);
+                tempoDisparo = null;
+                $("#disparo").remove();
+                podeAtirar = true;
+            }
         }
     }
 
