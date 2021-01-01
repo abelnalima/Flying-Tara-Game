@@ -183,6 +183,12 @@ function start() {
             respawnInimigo2();
         }
 
+        if (collision5.length > 0) {
+            $("#amigo").remove();
+
+            respawnAmigo();
+        }
+
     }
 
     function explosion1(posX, posY) {
@@ -230,6 +236,19 @@ function start() {
 
             if (gameOver === false) {
                 $("#fundoGame").append("<div id='inimigo2'></div>");
+            }
+        }
+    }
+
+    function respawnAmigo() {
+        var timeCollision5 = window.setInterval(respawn5, 6000);
+        
+        function respawn5() {
+            window.clearInterval(timeCollision5);
+            timeCollision5 = null;
+
+            if (gameOver === false) {
+                $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
             }
         }
     }
