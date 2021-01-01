@@ -189,6 +189,16 @@ function start() {
             respawnAmigo();
         }
 
+        if (collision6.length > 0) {
+            posX_Amigo = parseInt($("#amigo").css("left"));
+            posY_Amigo = parseInt($("#amigo").css("top"));
+            
+            explosion3(posX_Amigo, posY_Amigo);
+            $("#amigo").remove();
+
+            respawnAmigo();
+        }
+
     }
 
     function explosion1(posX, posY) {
@@ -225,6 +235,21 @@ function start() {
             window.clearInterval(timeExplosion);
             timeExplosion = null;
         }
+    }
+
+    function explosion3(posX, posY) {
+        $("#fundoGame").append("<div id='explosion3' class='anima4'></div>");
+        $("#explosion3").css("left", posX);
+        $("#explosion3").css("top", posY);
+
+        var timeExplosion = window.setInterval(removeExplosion, 1000);
+
+        function removeExplosion() {
+            $("#explosion3").remove();
+            window.clearInterval(timeExplosion);
+            timeExplosion = null;
+        }
+
     }
 
     function respawnInimigo2() {
