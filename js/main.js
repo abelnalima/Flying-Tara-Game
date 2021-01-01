@@ -172,6 +172,17 @@ function start() {
 
         }
 
+        if (collision4.length > 0) {
+            posX_Inimigo2 = parseInt($("#inimigo2").css("left"));
+            posY_Inimigo2 = parseInt($("#inimigo2").css("top"));
+            explosion2(posX_Inimigo2, posY_Inimigo2);
+
+            $("#disparo").css("left", 950);
+            $("#inimigo2").remove();
+
+            respawnInimigo2();
+        }
+
     }
 
     function explosion1(posX, posY) {
