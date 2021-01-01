@@ -8,6 +8,7 @@ function start() {
 
     /* Principais variaves do jogo */
     var jogo = {};
+    var gameOver = false;
     var podeAtirar = true;
     var vel_Inimigo1 = 7;
     var posY_Inimigo1 = parseInt(Math.random() * 334);
@@ -133,10 +134,10 @@ function start() {
     function divCollision() {
         var collision1 = ($("#jogador").collision($("#inimigo1")));
         var collision2 = ($("#jogador").collision($("#inimigo2")));
-        var collision4 = ($("#jogador").collision($("#amigo")));
-        var collision5 = ($("#disparo").collision($("#inimigo1")));
-        var collision6 = ($("#disparo").collision($("#inimigo2")));
-        var collision3 = ($("#inimigo2").collision($("#amigo")));
+        var collision3 = ($("#disparo").collision($("#inimigo1")));
+        var collision4 = ($("#disparo").collision($("#inimigo2")));
+        var collision5 = ($("#jogador").collision($("#amigo")));
+        var collision6 = ($("#inimigo2").collision($("#amigo")));
         
         if (collision1.length > 0) {
             posX_Inimigo1 = parseInt($("inimigo1").css("left"));
@@ -147,6 +148,18 @@ function start() {
             $("#inimigo1").css("left", 694);
             $("#inimigo1").css("top", posY_Inimigo1);
         }
+
+        if (collision2.length > 0) {
+            posX_Inimigo2 = parseInt($("#inimigo2").css("left"));
+            posY_Inimigo2 = parseInt($("#inimigo2").css("top"));
+            explosion2(posX_Jogador, posX_Jogador);
+
+            $("#inimigo2").remove;
+            
+            respawnInimigo2();
+        }
+
+        
 
     }
 
@@ -165,6 +178,37 @@ function start() {
             div.remove();
             window.clearInterval(timeExplosion);
             timeExplosion = null;
+        }
+    }
+
+    function explosion2(posX, posY) {
+        $("#fundoGame").append("<div id='explosion1'></div>");
+        $("#explosion1").css("background-image", "../imgs/explosao.png");
+
+        var div = $("#explosion1");
+        div.css("top", posY);
+        div.css("left", posX);
+        div.animate({width: 200, opacity: 0}, "slow");
+
+        var timeExplosion = window.setInterval(removeExplosion, 1000);
+
+        function removeExplosion() {
+            div.remove();
+            window.clearInterval(timeExplosion);
+            timeExplosion = null;
+        }
+    }
+
+    function respawnInimigo2() {
+        var timeCollision2 = window.setInterval(respawn2, 5000);
+
+        function respawn2() {
+            window.clearInterval(timeCollision2);
+            timeCollision2 = null;
+
+            if (gameOver === false) {
+                $("#fundoGame").append("<div id='inimigo2'></div>");
+            }
         }
     }
 
