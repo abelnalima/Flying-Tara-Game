@@ -154,24 +154,23 @@ function start() {
             posY_Inimigo2 = parseInt($("#inimigo2").css("top"));
             explosion2(posX_Inimigo2, posY_Inimigo2);
 
-            $("#inimigo2").remove;
+            $("#inimigo2").remove();
             
             respawnInimigo2();
         }
 
-        /*if (collision3.length > 0) {
+        if (collision3.length > 0) {
             posX_Inimigo1 = parseInt($("#inimigo1").css("left"));
             posY_Inimigo1 = parseInt($("#inimigo1").css("top"));
             explosion1(posX_Inimigo1, posY_Inimigo1);
 
-            $("inimigo1").remove;
-            $("disparo").remove;
+            $("#disparo").css("left", 950);
             
             posY_Inimigo1 = parseInt(Math.random() * 334);
+            $("#inimigo1").css("left", 694);
             $("#inimigo1").css("top", posY_Inimigo1)
 
-            //ultimo commit foi collision2, explosion2, respawnInimigo2
-        }*/
+        }
 
     }
 
@@ -193,9 +192,9 @@ function start() {
         }
     }
 
-    /*function explosion2(posX, posY) {
+    function explosion2(posX, posY) {
         $("#fundoGame").append("<div id='explosion2'></div>");
-        $("#explosion2").css("background-image", "../imgs/explosao.png");
+        $("#explosion2").css("background-image", "url(../imgs/explosao.png)");
 
         var div = $("#explosion2");
         div.css("top", posY);
@@ -209,7 +208,7 @@ function start() {
             window.clearInterval(timeExplosion);
             timeExplosion = null;
         }
-    }*/s
+    }
 
     function respawnInimigo2() {
         var timeCollision2 = window.setInterval(respawn2, 5000);
