@@ -37,6 +37,7 @@ function start() {
         moveInimigo1();
         moveInimigo2();
         moveAmigo();
+        divCollision();
     }
 
     /* Função que movimenta o Background */
@@ -126,6 +127,44 @@ function start() {
                 $("#disparo").remove();
                 podeAtirar = true;
             }
+        }
+    }
+
+    function divCollision() {
+        var collision1 = ($("#jogador").collision($("#inimigo1")));
+        var collision2 = ($("#jogador").collision($("#inimigo2")));
+        var collision4 = ($("#jogador").collision($("#amigo")));
+        var collision5 = ($("#disparo").collision($("#inimigo1")));
+        var collision6 = ($("#disparo").collision($("#inimigo2")));
+        var collision3 = ($("#inimigo2").collision($("#amigo")));
+        
+        if (collision1.length > 0) {
+            posX_Inimigo1 = parseInt($("inimigo1").css("left"));
+            posY_Inimigo1 = parseInt($("#inimigo1").css("top"));
+            explosion1(posX_Inimigo1, posY_Inimigo1);
+
+            posY_Inimigo1 = parseInt(Math.random() * 334);
+            $("#inimigo1").css("left", 694);
+            $("#inimigo1").css("top", posY_Inimigo1);
+        }
+
+    }
+
+    function explosion1(posX, posY) {
+        $("#fundoGame").append("<div id='explosion1'></div>");
+        $("#explosion1").css("background-image", "../imgs/explosao.png");
+
+        var div = $("#explosion1");
+        div.css("top", posY);
+        div.css("left", posX);
+        div.animate({width: 200, opacity: 0}, "slow");
+
+        var timeExplosion = window.setInterval(removeExplosion, 1000);
+
+        function removeExplosion() {
+            div.remove();
+            window.clearInterval(timeExplosion);
+            timeExplosion = null;
         }
     }
 

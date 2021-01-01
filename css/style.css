@@ -84,6 +84,18 @@ body {
     background-image: url(../imgs/disparo.png);
 }
 
+#explosion1 {
+    width: 15px;
+    height: 87px;
+    position: absolute;
+}
+
+#explosion2 {
+    width: 15px;
+    height: 87px;
+    position: absolute;
+}
+
 /* ANIMATIONS */
 /*CSS3*/
 
