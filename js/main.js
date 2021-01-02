@@ -356,6 +356,7 @@ function start() {
         $("#inimigo1").remove();
         $("#inimigo2").remove();
         $("#amigo").remove();
+        $("#energy").remove();
 
         $("#fundoGame").append("<div id='fim'></div>");
 
@@ -364,4 +365,11 @@ function start() {
 
     }
 
+}
+
+function restartGame() {
+    somGameOver.pause();
+    $("#fim").remove();
+    
+    start();
 }
