@@ -279,7 +279,7 @@ function start() {
 
     function explosion3(posX, posY) {
         somPerdido.play();
-        
+
         $("#fundoGame").append("<div id='explosion3' class='anima4'></div>");
         $("#explosion3").css("left", posX);
         $("#explosion3").css("top", posY);
@@ -339,7 +339,29 @@ function start() {
 
         if (playerEnergy === 0) {
             $("#energy").css("background-image", "url(../imgs/energia0.png)");
+
+            endGame();
         }
+    }
+
+    function endGame() {
+        gameOver = true;
+        somFundo.pause();
+        somGameOver.play();
+
+        window.clearInterval(jogo.timer);
+        jogo.timer = null;
+
+        $("#jogador").remove();
+        $("#inimigo1").remove();
+        $("#inimigo2").remove();
+        $("#amigo").remove();
+
+        $("#fundoGame").append("<div id='fim'></div>");
+
+        $("#fim").html("<h1> Game Over </h1><p>Sua pontuação foi: " +pontuacao
+        +"</p>" +"<div id='restart' onClick = restartGame()><h3>Jogar Novamente</h3></div>");
+
     }
 
 }
