@@ -5,10 +5,14 @@ function start() {
     $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
     $("#fundoGame").append("<div id='inimigo2'></div>");
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
+    $("#fundoGame").append("<div id='score'></div>");
 
     /* Principais variaves do jogo */
     var jogo = {};
     var gameOver = false;
+    var pontuacao = 0;
+    var aliadoSalvo = 0;
+    var aliadoPerdido = 0;
     var podeAtirar = true;
     var vel_Inimigo1 = 7;
     var posY_Inimigo1 = parseInt(Math.random() * 334);
@@ -39,6 +43,7 @@ function start() {
         moveInimigo2();
         moveAmigo();
         divCollision();
+        scoreUpdate();
     }
 
     /* Função que movimenta o Background */
@@ -160,6 +165,8 @@ function start() {
         }
 
         if (collision3.length > 0) {
+            pontuacao += 100;
+
             posX_Inimigo1 = parseInt($("#inimigo1").css("left"));
             posY_Inimigo1 = parseInt($("#inimigo1").css("top"));
             explosion1(posX_Inimigo1, posY_Inimigo1);
@@ -168,11 +175,13 @@ function start() {
             
             posY_Inimigo1 = parseInt(Math.random() * 334);
             $("#inimigo1").css("left", 694);
-            $("#inimigo1").css("top", posY_Inimigo1)
+            $("#inimigo1").css("top", posY_Inimigo1);
 
         }
 
         if (collision4.length > 0) {
+            pontuacao += 50;
+
             posX_Inimigo2 = parseInt($("#inimigo2").css("left"));
             posY_Inimigo2 = parseInt($("#inimigo2").css("top"));
             explosion2(posX_Inimigo2, posY_Inimigo2);
@@ -184,12 +193,16 @@ function start() {
         }
 
         if (collision5.length > 0) {
+            aliadoSalvo++;
+
             $("#amigo").remove();
 
             respawnAmigo();
         }
 
         if (collision6.length > 0) {
+            aliadoPerdido++;
+
             posX_Amigo = parseInt($("#amigo").css("left"));
             posY_Amigo = parseInt($("#amigo").css("top"));
             
@@ -276,6 +289,10 @@ function start() {
                 $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
             }
         }
+    }
+
+    function scoreUpdate(){
+        $("#score").html("<h2> Pontos: " + pontuacao + " Salvos: " +aliadoSalvo + " Perdidos: " +aliadoPerdido + "</h2>");
     }
 
 }
