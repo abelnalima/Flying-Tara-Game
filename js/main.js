@@ -26,6 +26,17 @@ function start() {
 
     jogo.pressionou = [];
 
+    var somDisparo = document.getElementById("somDisparo");
+    var somExplosao = document.getElementById("somExplosao");
+    var somFundo = document.getElementById("somFundo");
+    var somGameOver = document.getElementById("somGameOver");
+    var somPerdido = document.getElementById("somPerdido");
+    var somResgate = document.getElementById("somResgate");
+
+    somFundo.addEventListener("ended", function() {somFundo.currentTime = 0;
+        somFundo.play();}, false);
+    somFundo.play();
+
     /* Verifica se o jogador pressionou alguma tecla */
     $(document).keydown(function(e) {
         jogo.pressionou[e.which] = true;
@@ -112,6 +123,8 @@ function start() {
 
     function disparo() {
         if (podeAtirar == true) {
+            somDisparo.play();
+
             podeAtirar = false;
 
             posY_Jogador = parseInt($("#jogador").css("top"));
@@ -173,6 +186,7 @@ function start() {
 
         if (collision3.length > 0) {
             pontuacao += 100;
+            //vel_Inimigo1 += 0.3;
 
             posX_Inimigo1 = parseInt($("#inimigo1").css("left"));
             posY_Inimigo1 = parseInt($("#inimigo1").css("top"));
@@ -200,6 +214,8 @@ function start() {
         }
 
         if (collision5.length > 0) {
+            somResgate.play();
+
             aliadoSalvo++;
 
             $("#amigo").remove();
@@ -222,6 +238,8 @@ function start() {
     }
 
     function explosion1(posX, posY) {
+        somExplosao.play();
+
         $("#fundoGame").append("<div id='explosion1'></div>");
         $("#explosion1").css("background-image", "url(../imgs/explosao.png)");
 
@@ -240,6 +258,8 @@ function start() {
     }
 
     function explosion2(posX, posY) {
+        somExplosao.play();
+
         $("#fundoGame").append("<div id='explosion2'></div>");
         $("#explosion2").css("background-image", "url(../imgs/explosao.png)");
 
@@ -258,6 +278,8 @@ function start() {
     }
 
     function explosion3(posX, posY) {
+        somPerdido.play();
+        
         $("#fundoGame").append("<div id='explosion3' class='anima4'></div>");
         $("#explosion3").css("left", posX);
         $("#explosion3").css("top", posY);
