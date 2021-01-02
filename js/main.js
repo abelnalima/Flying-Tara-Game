@@ -6,6 +6,7 @@ function start() {
     $("#fundoGame").append("<div id='inimigo2'></div>");
     $("#fundoGame").append("<div id='amigo' class='anima3'></div>");
     $("#fundoGame").append("<div id='score'></div>");
+    $("#fundoGame").append("<div id='energy'></div>");
 
     /* Principais variaves do jogo */
     var jogo = {};
@@ -13,6 +14,7 @@ function start() {
     var pontuacao = 0;
     var aliadoSalvo = 0;
     var aliadoPerdido = 0;
+    var playerEnergy = 3;
     var podeAtirar = true;
     var vel_Inimigo1 = 7;
     var posY_Inimigo1 = parseInt(Math.random() * 334);
@@ -44,6 +46,7 @@ function start() {
         moveAmigo();
         divCollision();
         scoreUpdate();
+        energyUpdate();
     }
 
     /* Função que movimenta o Background */
@@ -145,6 +148,8 @@ function start() {
         var collision6 = ($("#inimigo2").collision($("#amigo")));
         
         if (collision1.length > 0) {
+            playerEnergy--;
+
             posX_Inimigo1 = parseInt($("#inimigo1").css("left"));
             posY_Inimigo1 = parseInt($("#inimigo1").css("top"));
             explosion1(posX_Inimigo1, posY_Inimigo1);
@@ -155,6 +160,8 @@ function start() {
         }
 
         if (collision2.length > 0) {
+            playerEnergy--;
+
             posX_Inimigo2 = parseInt($("#inimigo2").css("left"));
             posY_Inimigo2 = parseInt($("#inimigo2").css("top"));
             explosion2(posX_Inimigo2, posY_Inimigo2);
@@ -293,6 +300,24 @@ function start() {
 
     function scoreUpdate(){
         $("#score").html("<h2> Pontos: " + pontuacao + " Salvos: " +aliadoSalvo + " Perdidos: " +aliadoPerdido + "</h2>");
+    }
+
+    function energyUpdate() {
+        if (playerEnergy === 3) {
+            $("#energy").css("background-image", "url(../imgs/energia3.png)");
+        }
+
+        if (playerEnergy === 2) {
+            $("#energy").css("background-image", "url(../imgs/energia2.png)");
+        }
+
+        if (playerEnergy === 1) {
+            $("#energy").css("background-image", "url(../imgs/energia1.png)");
+        }
+
+        if (playerEnergy === 0) {
+            $("#energy").css("background-image", "url(../imgs/energia0.png)");
+        }
     }
 
 }

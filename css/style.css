@@ -85,10 +85,18 @@ body {
     top: 590px;
 }
 
-h2 {
+#score h2 {
     font-family: Titulo;
     font-size: 20px;
     color: #FFF;
+}
+
+#energy {
+    width: 140px;
+    height: 38px;
+    position: absolute;
+    left: 750px;
+    top: 7px;
 }
 
 #disparo {
