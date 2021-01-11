@@ -1,0 +1,434 @@
+/* --- CHARACTERS --- */
+.animaMiniUfo {
+    background-image: url(../imgs/miniUfo.png);
+    animation: playMiniUfo .9s steps(16) infinite;
+
+    -webkit-animation: playMiniUfo .9s steps(16) infinite;
+    -moz-animation: playMiniUfo .9s steps(16) infinite;
+    -ms-animation: playMiniUfo .9s steps(16) infinite;
+    -o-animation: playMiniUfo .9s steps(16) infinite;
+}
+
+.animaRebelTruck {
+    background-image: url(../imgs/rebelTruck.png);
+    animation: playRebelTruck .5s steps(4) infinite;
+
+    -webkit-animation: playRebelTruck .5s steps(4) infinite;
+    -moz-animation: playRebelTruck .5s steps(4) infinite;
+    -ms-animation: playRebelTruck .5s steps(4) infinite;
+    -o-animation: playRebelTruck .5s steps(4) infinite;
+}
+
+.animaBigEyes_1 {
+    background-image: url(../imgs/bigEyes_1.png);
+    animation: playBigEyes_1 .7s steps(22) infinite;
+
+    -webkit-animation: playBigEyes_1 .7s steps(22) infinite;
+    -moz-animation: playBigEyes_1 .7s steps(22) infinite;
+    -ms-animation: playBigEyes_1 .7s steps(22) infinite;
+    -o-animation: playBigEyes_1 .7s steps(22) infinite;
+}
+
+.animaBigEyes_2 {
+    background-image: url(../imgs/bigEyes_2.png);
+    animation: playBigEyes_2 .9s steps(16) infinite;
+
+    -webkit-animation: playBigEyes_2 .9s steps(16) infinite;
+    -moz-animation: playBigEyes_2 .9s steps(16) infinite;
+    -ms-animation: playBigEyes_2 .9s steps(16) infinite;
+    -o-animation: playBigEyes_2 .9s steps(16) infinite;
+}
+
+.animaMarsMecha {
+    background-image: url(../imgs/marsMecha.png);
+    animation: playMarsMecha .9s steps(8) infinite;
+
+    -webkit-animation: playMarsMecha .9s steps(8) infinite;
+    -moz-animation: playMarsMecha .9s steps(8) infinite;
+    -ms-animation: playMarsMecha .9s steps(8) infinite;
+    -o-animation: playMarsMecha .9s steps(8) infinite;
+}
+
+.animaPow {
+    background-image: url(../imgs/pow.png);
+    animation: playPow .9s steps(12) infinite;
+
+    -webkit-animation: playPow .9s steps(12) infinite;
+    -moz-animation: playPow .9s steps(12) infinite;
+    -ms-animation: playPow .9s steps(12) infinite;
+    -o-animation: playPow .9s steps(12) infinite;
+}
+
+.animaMissile {
+    background-image: url(../imgs/missile.png);
+    animation: playMissile .5s steps(2) infinite;
+
+    -webkit-animation: playMissile .5s steps(2) infinite;
+    -moz-animation: playMissile .5s steps(2) infinite;
+    -ms-animation: playMissile .5s steps(2) infinite;
+    -o-animation: playMissile .5s steps(2) infinite;
+}
+
+/* --- EXPLOSIONS && DEATH --- */
+.animaFlyingTaraExplosion {
+    width: 80px;
+    height: 80px;
+    background-image: url(../imgs/flyingTaraExplosion.png);
+    animation: playFlyingTaraExplosion .9s steps(17) infinite;
+
+    -webkit-animation: playFlyingTaraExplosion .9s steps(17) infinite;
+    -moz-animation: playFlyingTaraExplosion .9s steps(17) infinite;
+    -ms-animation: playFlyingTaraExplosion .9s steps(17) infinite;
+    -o-animation: playFlyingTaraExplosion .9s steps(17) infinite;
+}
+
+.animaMiniUfoExplosion {
+    width: 58.09px;
+    height: 58px;
+    background-image: url(../imgs/miniUfoExplosion.png);
+    animation: playMiniUfoExplosion .9s steps(22) infinite;
+
+    -webkit-animation: playMiniUfoExplosion .9s steps(22) infinite;
+    -moz-animation: playMiniUfoExplosion .9s steps(22) infinite;
+    -ms-animation: playMiniUfoExplosion .9s steps(22) infinite;
+    -o-animation: playMiniUfoExplosion .9s steps(22) infinite;
+}
+
+.animaRebelTruckExplosion {
+    width: 124px;
+    height: 83px;
+    background-image: url(../imgs/rebelTruckExplosion.png);
+    animation: playRebelTruckExplosion .9s steps(26) infinite;
+
+    -webkit-animation: playRebelTruckExplosion .9s steps(26) infinite;
+    -moz-animation: playRebelTruckExplosion .9s steps(26) infinite;
+    -ms-animation: playRebelTruckExplosion .9s steps(26) infinite;
+    -o-animation: playRebelTruckExplosion .9s steps(26) infinite;
+}
+
+.animaMarsMechaExplosion {
+    width: 108px;
+    height: 118px;
+    background-image: url(../imgs/marsMechaExplosion.png);
+    animation: playMarsMechaExplosion .9s steps(21) infinite;
+
+    -webkit-animation: playMarsMechaExplosion .9s steps(21) infinite;
+    -moz-animation: playMarsMechaExplosion .9s steps(21) infinite;
+    -ms-animation: playMarsMechaExplosion .9s steps(21) infinite;
+    -o-animation: playMarsMechaExplosion .9s steps(21) infinite;
+}
+
+.animaPowDeath {
+    width: 40px;
+    height: 36px;
+    background-image: url(../imgs/ms_deathAlly.png);
+    animation: playPowDeath .9s steps(10) infinite;
+
+    -webkit-animation: playPowDeath .9s steps(10) infinite;
+    -moz-animation: playPowDeath .9s steps(10) infinite;
+    -ms-animation: playPowDeath .9s steps(10) infinite;
+    -o-animation: playPowDeath .9s steps(10) infinite;
+}
+
+/* --- KEYFRAMES CHARACTERS --- */
+@keyframes playMiniUfo {
+    from {background-position: 0px;}
+    to {background-position: -736px;}
+}
+
+@-webkit-keyframes playMiniUfo {
+    from {background-position: 0px;}
+    to {background-position: -736px;}
+}
+
+@-moz-keyframes playMiniUfo {
+    from {background-position: 0px;}
+    to {background-position: -736px;}
+}
+
+@-ms-keyframes playMiniUfo {
+    from {background-position: 0px;}
+    to {background-position: -736px;}
+}
+
+@-o-keyframes playMiniUfo {
+    from {background-position: 0px;}
+    to {background-position: -736px;}
+}
+
+@keyframes playRebelTruck {
+    from {background-position: 0px;}
+    to {background-position: -492px;}
+}
+
+@-webkit-keyframes playRebelTruck {
+    from {background-position: 0px;}
+    to {background-position: -492px;}
+}
+
+@-moz-keyframes playRebelTruck {
+    from {background-position: 0px;}
+    to {background-position: -492px;}
+}
+
+@-ms-keyframes playRebelTruck {
+    from {background-position: 0px;}
+    to {background-position: -492px;}
+}
+
+@-o-keyframes playRebelTruck {
+    from {background-position: 0px;}
+    to {background-position: -492px;}
+}
+
+@keyframes playMarsMecha {
+    from {background-position: 0px;}
+    to {background-position: -1408px;}
+}
+
+@-webkit-keyframes playMarsMecha {
+    from {background-position: 0px;}
+    to {background-position: -1408px;}
+}
+
+@-moz-keyframes playMarsMecha {
+    from {background-position: 0px;}
+    to {background-position: -1408px;}
+}
+
+@-ms-keyframes playMarsMecha {
+    from {background-position: 0px;}
+    to {background-position: -1408px;}
+}
+
+@-o-keyframes playMarsMecha {
+    from {background-position: 0px;}
+    to {background-position: -1408px;}
+}
+
+@keyframes playMissile {
+    from {background-position: 0px;}
+    to {background-position: -96px;}
+}
+
+@-webkit-keyframes playMissile {
+    from {background-position: 0px;}
+    to {background-position: -96px;}
+}
+
+@-moz-keyframes playMissile {
+    from {background-position: 0px;}
+    to {background-position: -96px;}
+}
+
+@-ms-keyframes playMissile {
+    from {background-position: 0px;}
+    to {background-position: -96px;}
+}
+
+@-o-keyframes playMissile {
+    from {background-position: 0px;}
+    to {background-position: -96px;}
+}
+
+@keyframes playPow {
+    from {background-position: 0px;}
+    to {background-position: -420px;}
+}
+
+@-webkit-keyframes playPow {
+    from {background-position: 0px;}
+    to {background-position: -420px;}
+}
+
+@-moz-keyframes playPow {
+    from {background-position: 0px;}
+    to {background-position: -420px;}
+}
+
+@-ms-keyframes playPow {
+    from {background-position: 0px;}
+    to {background-position: -420px;}
+}
+
+@-o-keyframes playPow {
+    from {background-position: 0px;}
+    to {background-position: -420px;}
+}
+
+/* --- KEYFRAMES EXPLOSIONS && DEATH --- */
+@keyframes playFlyingTaraExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1360px;}
+}
+
+@-webkit-keyframes playFlyingTaraExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1360px;}
+}
+
+@-moz-keyframes playFlyingTaraExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1360px;}
+}
+
+@-ms-keyframes playFlyingTaraExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1360px;}
+}
+
+@-o-keyframes playFlyingTaraExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1360px;}
+}
+
+@keyframes playMiniUfoExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1278px;}
+}
+
+@-webkit-keyframes playMiniUfoExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1278px;}
+}
+
+@-moz-keyframes playMiniUfoExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1278px;}
+}
+
+@-ms-keyframes playMiniUfoExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1278px;}
+}
+
+@-o-keyframes playMiniUfoExplosion {
+    from {background-position: 0px;}
+    to {background-position: -1278px;}
+}
+
+@keyframes playRebelTruckExplosion {
+    from {background-position: 0px;}
+    to {background-position: -3224px;}
+}
+
+@-webkit-keyframes playRebelTruckExplosion {
+    from {background-position: 0px;}
+    to {background-position: -3224px;}
+}
+
+@-moz-keyframes playRebelTruckExplosion {
+    from {background-position: 0px;}
+    to {background-position: -3224px;}
+}
+
+@-ms-keyframes playRebelTruckExplosion {
+    from {background-position: 0px;}
+    to {background-position: -3224px;}
+}
+
+@-o-keyframes playRebelTruckExplosion {
+    from {background-position: 0px;}
+    to {background-position: -3224px;}
+}
+
+@keyframes playMarsMechaExplosion {
+    from {background-position: 0px;}
+    to {background-position: -2268px;}
+}
+
+@-webkit-keyframes playMarsMechaExplosion {
+    from {background-position: 0px;}
+    to {background-position: -2268px;}
+}
+
+@-moz-keyframes playMarsMechaExplosion {
+    from {background-position: 0px;}
+    to {background-position: -2268px;}
+}
+
+@-ms-keyframes playMarsMechaExplosion {
+    from {background-position: 0px;}
+    to {background-position: -2268px;}
+}
+
+@-o-keyframes playMarsMechaExplosion {
+    from {background-position: 0px;}
+    to {background-position: -2268px;}
+}
+
+@keyframes playPowDeath {
+    from {background-position: 0px;}
+    to {background-position: -400px;}
+}
+
+@-webkit-keyframes playPowDeath {
+    from {background-position: 0px;}
+    to {background-position: -400px;}
+}
+
+@-moz-keyframes playPowDeath {
+    from {background-position: 0px;}
+    to {background-position: -400px;}
+}
+
+@-ms-keyframes playPowDeath {
+    from {background-position: 0px;}
+    to {background-position: -400px;}
+}
+
+@-o-keyframes playPowDeath {
+    from {background-position: 0px;}
+    to {background-position: -400px;}
+}
+
+/* NOT USED */
+@keyframes play18 { /* BigEyes_1*/
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-webkit-keyframes play18 {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-moz-keyframes play18 {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-ms-keyframes play18 {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-o-keyframes play18 {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@keyframes play20 { /* BigEyes_2*/
+    from {background-position: 0px;}
+    to {background-position: -544px;}
+}
+
+@-webkit-keyframes play20 {
+    from {background-position: 0px;}
+    to {background-position: -544px;}
+}
+
+@-moz-keyframes play20 {
+    from {background-position: 0px;}
+    to {background-position: -544px;}
+}
+
+@-ms-keyframes play20 {
+    from {background-position: 0px;}
+    to {background-position: -544px;}
+}
+
+@-o-keyframes play20 {
+    from {background-position: 0px;}
+    to {background-position: -544px;}
+}

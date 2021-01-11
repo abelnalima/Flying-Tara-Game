@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heli Attack</title>
+    <title> Flying Tara </title>
+    <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/animation.css">
 </head>
+
 <body>
     <div id="container">
-        <div id="fundoGame">
-            <div id="inicio" onclick="start()">
-                <h1> Heli Attack </h1>
-                <p> Utilize a tecla W para movimentar o helicóptero para cima,
-                    a tecla S para movimentar o helicóptero para baixo,
-                    a tecla A para movimentar o helicóptero para esquerda, e
-                    a tecla D para movimentar o helicóptero para direita.
-                </p>
-                <p> Clique aqui para iniciar!</p>
-            </div>
+        <div id="gameBackground">
+
+                <div id="nameLogo">
+                    <p> FLYING TARA</p>
+                    <p> THE LAST MISSION </p>
+                </div>
+    
+                <div id="howToPlay">
+                    <p> Arrow UP: movimenta para cima. </p>
+                    <p> Arrow DOWN: movimenta para baixo. </p>
+                    <p> Arrow LEFT: movimenta para esquerda. </p>
+                    <p> Arrow RIGHT: movimenta para direita. </p>
+                    <p> D: disparar míssel. </p>
+                </div>
+    
+                <div id="start" onclick="start()">
+                    START GAME
+                </div>
         </div>
     </div>
 
@@ -29,7 +40,7 @@
     <audio src="../sons/perdido.mp3" preload="auto" id="somPerdido"></audio>
     <audio src="../sons/resgate.mp3" preload="auto" id="somResgate"></audio>
 
-    <!-- SCRIPTS -->>
+    <!-- SCRIPTS -->
     <script src="../jquery/jquery-1.11.1.min.js"></script>
     <script src="../jquery/jquery-collision.min.js"></script>
     <script src="../js/main.js"></script>

@@ -1,19 +1,13 @@
-/*Comando CSS3 para indicar uma fonte*/
 @font-face {
-    font-family: Titulo;
-    src: url(../fontes/ANODETONOONE.TTF);
-}
-
-h1 {
-    font-family: Titulo;
-    font-size: 40px;
-    color: #603A03;
+    font-family: font_armalite;
+    src: url(../fontes/armalite.ttf);
 }
 
 body {
-    background-image: url(../imgs/fundo.jpg);
+    background-color: lightgray;
 }
 
+/* --- ELEMENTS DIVs --- */
 #container {
     width: 950px;
     height: auto;
@@ -22,242 +16,339 @@ body {
     margin-right: auto;
 }
 
-#fundoGame {
+#gameBackground {
     width: 950px;
     height: 630px;
-    background-image: url(../imgs/fundo_game.jpg);
+    background-image: url(../imgs/game_background.png);
+    background-size: cover;
     border-color: #FFF;
     border-style: solid;
 }
 
-#inicio {
-    width: 350px;
-    height: 200px;
-    background-color: #FFF;
+#nameLogo {
+    width:fit-content;
+    height: fit-content;
+    position: absolute;
+    font-family: font_armalite;
+    text-align: center;
+    margin-top: 3%;
+    margin-left: 10%;
+}
+
+#nameLogo p:nth-child(1) {
+    font-size: 120px;
+    margin: 0px;
+}
+
+#nameLogo p:nth-child(2) {
+    font-size: 60px;
+    margin-top: -25px;
+}
+
+#howToPlay {
+    margin: 0px;
+    width: 400px;
+    height: fit-content;
+    background-color: lightgray;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    text-align: justify;
+    margin-top: 28%;
+    margin-left: 28%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color: lightslategray;
+}
+
+#howToPlay p {
+    margin: 10px;
+    padding-left: 20px;
+}
+
+#start {
+    width: 300px;
+    background-color: lightgray;
+    font-family: font_armalite;
+    font-size: 50px;
+    color: #000000;
+    padding: 5px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
+    margin-top: 5%;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: lightslategray;
+}
+
+#start:hover {
+    background: linear-gradient(rgba(255, 250, 1, .50), rgba(255, 1, 20, .50)100%);
+}
+
+#endScreen {
+    width: fit-content;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     padding: 10px;
+    font-family: font_armalite;
 }
 
-#jogador {
-    width: 256px;
-    height: 66px;
+#endScreen h1 {
+    font-family: font_armalite;
+    font-size: 100px;
+    color: red;
+    margin-top: 40px;
+}
+
+#endScreen p:nth-child(2) {
+    font-size: 60px;
+    margin-top: -20px;
+}
+
+#endScreen p:nth-child(3) {
+    font-size: 60px;
+    margin-top: -65px;
+}
+
+#restartButton {
+    width: 350px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -10px;
+    padding-top: 6px;
+    background-color: lightgrey;
+    font-family: font_armalite;
+    font-size: 40px;
+    text-align: center;
+    color: #000000;
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 5px;
+    border-color: lightslategray;
+}
+
+#restartButton:hover {
+    background: linear-gradient(rgba(255, 250, 1, .50), rgba(255, 1, 20, .50)100%);
+}
+
+/* --- CHARACTERS DIVs --- */
+#flyingTara { /* Player Avatar */
+    width: 85px;
+    height: 40px;
     position: absolute;
-    left: 8px;
+    left: 20px;
     top: 179px;
-    background-image: url(../imgs/apache.png);
+    background-image: url(../imgs/flyingTara_idle.png);
 }
 
-#inimigo1 {
-    width: 256px;
-    height: 66px;
+#miniUfo {
+    width: 46px;
+    height: 40px;
+    position: absolute;
+    left: 860px;
+    top: 253px;
+    background-image: url(../imgs/miniUfo.png);
+}
+
+#rebelTruck {
+    width: 123px;
+    height: 78px;
+    position: absolute;
+    left: 820px;
+    top: 530px;
+    background-image: url(../imgs/rebelTruck.png);
+}
+
+#bigEyes_1 {
+    width: 37px;
+    height: 33px;
     position: absolute;
     left: 689px;
     top: 253px;
-    background-image: url(../imgs/inimigo1.png);
+    background-image: url(../imgs/bigEyes_1.png);
 }
 
-#inimigo2 {
-    width: 165px;
-    height: 70px;
+#bigEyes_2 {
+    width: 34px;
+    height: 32px;
+    position: absolute;
+    left: 689px;
+    top: 150px;
+    background-image: url(../imgs/bigEyes_2.png);
+}
+
+#marsMecha {
+    width: 176px;
+    height: 181px;
     position: absolute;
     left: 775px;
-    top: 447px;
-    background-image: url(../imgs/inimigo2.png);
+    top: 435px;
+    background-image: url(../imgs/marsMecha.png);
 }
 
-#amigo {
-    width: 44px;
-    height: 51px;
+#prisionerOfWar {
+    width: 35px;
+    height: 43px;
     position: absolute;
     left: 10px;
-    top: 464px;
-    background-image: url(../imgs/amigo.png);
+    top: 564px;
+    background-image: url(../imgs/pow.png);
 }
 
-#score {
-    width: 450px;
-    height: 50px;
+#missile {
+    width: 48px;
+    height: 17px;
     position: absolute;
-    left: 5px;
-    top: 590px;
+    background-image: url(../imgs/missile.png);
 }
 
-#score h2 {
-    font-family: Titulo;
-    font-size: 20px;
-    color: #FFF;
-}
+/* --- GUI DIVs --- */
 
-#energy {
-    width: 140px;
-    height: 38px;
+#interface {
+    width: 950px;
+    height: 60px;
     position: absolute;
-    left: 750px;
-    top: 7px;
+    background-image: url(../imgs/interface.png);
 }
 
-#disparo {
-    width: 50px;
-    height: 8px;
+#energyBar {
+    width: 160px;
+    height: 45px;
     position: absolute;
-    background-image: url(../imgs/disparo.png);
+    left: 400px;
+    top: 9px;
 }
 
-#explosion1 {
-    width: 15px;
-    height: 87px;
+#savedPow {
+    width: 100px;
+    height: 45px;
     position: absolute;
-}
-
-#explosion2 {
-    width: 15px;
-    height: 87px;
-    position: absolute;
-}
-
-#explosion3 {
-    width: 44px;
-    height: 51px;
-    position: absolute;
-}
-
-#fim {
-    width: 350px;
-    height: 200px;
-    background-color: #FFF;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 100px;
+    left: 100px;
+    top: 6px;
+    background-color: black;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    font-size: 16px;
     text-align: center;
-    padding: 10px;
+    color: white;
 }
 
-#fim h3 {
-    font-family: Titulo;
-    font-size: 20px;
-    color: #603A03;
+#savedPow p {
+    margin: 0px;
+    padding: 3px;
 }
 
-/* ANIMATIONS */
-/*CSS3*/
-
-.anima1 {
-    background-image: url(../imgs/apache.png);
-    animation: play .5s steps(2) infinite;
-
-    -webkit-animation: play .5s steps(2) infinite;
-    -moz-animation: play .5s steps(2) infinite;
-    -ms-animation: play .5s steps(2) infinite;
-    -o-animation: play .5s steps(2) infinite;
+#savedPow p:nth-child(2){
+    margin-top: -6px;
 }
 
-.anima2 {
-    background-image: url(../imgs/inimigo1.png);
-    animation: play .5s steps(2) infinite;
-
-    -webkit-animation: play .5s steps(2) infinite;
-    -moz-animation: play .5s steps(2) infinite;
-    -ms-animation: play .5s steps(2) infinite;
-    -o-animation: play .5s steps(2) infinite;
+#lostPow {
+    width: 100px;
+    height: 45px;
+    position: absolute;
+    left: 250px;
+    top: 6px;
+    background-color: black;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: white;
 }
 
-.anima3 {
-    background-image: url(../imgs/amigo.png);
-    animation: play2 .9s steps(12) infinite;
-
-    -webkit-animation: play2 .9s steps(12) infinite;
-    -moz-animation: play2 .9s steps(12) infinite;
-    -ms-animation: play2 .9s steps(12) infinite;
-    -o-animation: play2 .9s steps(12) infinite;
+#lostPow p {
+    margin: 0px;
+    padding: 3px;
 }
 
-.anima4 {
-    width: 44px;
-    height: 51px;
-    background-image: url(../imgs/amigo_morte.png);
-    animation: play3 .5s steps(7) infinite;
-
-    -webkit-animation: play3 .5s steps(7) infinite;
-    -moz-animation: play3 .5s steps(7) infinite;
-    -ms-animation: play3 .5s steps(7) infinite;
-    -o-animation: play3 .5s steps(7) infinite;
+#lostPow p:nth-child(2) {
+    margin-top: -6px;
 }
 
-@keyframes play {
-    from {background-position: 0px;}
-    to {background-position: -512px;}
+#playerScore {
+    width: 100px;
+    height: 45px;
+    position: absolute;
+    left: 610px;
+    top: 6px;
+    background-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: white;
+    font-size: 16px;
+    text-align: center;
+    color: white;
 }
 
-@-webkit-keyframes play {
-    from {background-position: 0px;}
-    to {background-position: -512px;}
+#playerScore p {
+    margin: 0px;
+    padding: 3px;
 }
 
-@-moz-keyframes play {
-    from {background-position: 0px;}
-    to {background-position: -512px;}
+#playerScore p:nth-child(2) {
+    margin-top: -6px;
 }
 
-@-ms-keyframes play {
-    from {background-position: 0px;}
-    to {background-position: -512px;}
+#bestScore {
+    width: 100px;
+    height: 45px;
+    position: absolute;
+    left: 760px;
+    top: 6px;
+    background-color: black;
+    border-style: solid;
+    border-color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    color: white;
 }
 
-@-o-keyframes play {
-    from {background-position: 0px;}
-    to {background-position: -512px;}
+#bestScore p {
+    margin: 0px;
+    padding: 3px;
 }
 
-@keyframes play2 {
-    from {background-position: 0px;}
-    to {background-position: -528px;}
+#bestScore p:nth-child(2) {
+    margin-top: -6px;
 }
 
-@-webkit-keyframes play2 {
-    from {background-position: 0px;}
-    to {background-position: -528px;}
+/* --- EXPLOSIONS DIVs --- */
+#flyingTaraExplosion {
+    width: 80px; /* 17 frames */
+    height: 80px;
+    position: absolute;
 }
 
-@-moz-keyframes play2 {
-    from {background-position: 0px;}
-    to {background-position: -528px;}
+#miniUfoExplosion {
+    width: 58.09px;
+    height: 58px;
+    position: absolute;
 }
 
-@-ms-keyframes play2 {
-    from {background-position: 0px;}
-    to {background-position: -528px;}
+#rebelTruckExplosion {
+    width: 124px;
+    height: 83px;
+    position: absolute;
 }
 
-@-o-keyframes play2 {
-    from {background-position: 0px;}
-    to {background-position: -528px;}
+#marsMechaExplosion {
+    width: 108px;
+    height: 118px;
+    position: absolute;
 }
 
-@keyframes play3 {
-    from {background-position: 0px;}
-    to {background-position: -308px;}
+#powDeath {
+    width: 40px;
+    height: 36px;
+    position: absolute;
 }
-
-@-webkit-keyframes play3 {
-    from {background-position: 0px;}
-    to {background-position: -308px;}
-}
-
-@-moz-keyframes play3 {
-    from {background-position: 0px;}
-    to {background-position: -308px;}
-}
-
-@-ms-keyframes play3 {
-    from {background-position: 0px;}
-    to {background-position: -308px;}
-}
-
-@-o-keyframes play3 {
-    from {background-position: 0px;}
-    to {background-position: -308px;}
-}
-
