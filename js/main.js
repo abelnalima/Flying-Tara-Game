@@ -11,6 +11,8 @@ function start() {
     $("#gameBackground").append("<div id='flyingTara'></div>");
     $("#gameBackground").append("<div id='miniUfo' class='animaMiniUfo'></div>");
     $("#gameBackground").append("<div id='rebelTruck' class='animaRebelTruck'></div>");
+    $("#gameBackground").append("<div id='bigEyes_1' class='animaBigEyes_1'></div>");
+    $("#bigEyes_1").hide();
     $("#gameBackground").append("<div id='marsMecha' class='animaMarsMecha'></div>");
     $("#gameBackground").append("<div id='prisionerOfWar' class='animaPow'></div>");
     $("#gameBackground").append("<div id='energyBar'></div>");
@@ -27,7 +29,13 @@ function start() {
     var lostPow = 0;
     var playerEnergy = 3;
     var Firing = false;
-    var speedMiniUfo = 7;
+    var speed = {
+        miniUfo: 7,
+        rebelTruck: 3,
+        marsMecha: 3,
+        pow: 1,
+        missile: 15
+    }
     var posY_miniUfo = parseInt(Math.random() * 334);
     var KEY = {
         MISSILE: 68, //KEY D
@@ -41,20 +49,22 @@ function start() {
     jogo.pressionou = [];
 
     /* --- SOUNDS --- */
-    var soundFiring = document.getElementById("somDisparo");
-    var soundExplosion = document.getElementById("somExplosao");
-    var soundBackground = document.getElementById("somFundo");
-    var soundGameOver = document.getElementById("somGameOver");
-    var soundLostPow = document.getElementById("somPerdido");
-    var soundRescuedPow = document.getElementById("somResgate");
+    var sounds = {
+        firing: document.getElementById("somDisparo"),
+        explosion: document.getElementById("somExplosao"),
+        background: document.getElementById("somFundo"),
+        gameOver: document.getElementById("somGameOver"),
+        lostPow: document.getElementById("somPerdido"),
+        rescuedPow: document.getElementById("somResgate")
+    }
 
-    soundBackground.addEventListener("ended", function() {
-        soundBackground.currentTime = 0;
-        soundBackground.play();}, false);
+    sounds.background.addEventListener("ended", function() {
+        sounds.background.currentTime = 0;
+        sounds.background.play();}, false);
     
-    soundGameOver.pause(); //Pausa a execução ao dar RESTART GAME
-    soundGameOver.currentTime = 0; //Reinicia o som
-    soundBackground.play();
+    sounds.gameOver.pause(); //Pausa a execução ao dar RESTART GAME
+    sounds.gameOver.currentTime = 0; //Reinicia o som
+    sounds.background.play();
 
     /* --- KEY PRESSED VERIFICATION --- */
     $(document).keydown(function(e) {
@@ -75,6 +85,7 @@ function start() {
         moveRebelTruck();
         moveMarsMecha();
         movePrisionerOfWar();
+        spawnBigEyes_1(score);
         divCollision();
         scoreUpdate();
         energyUpdate();
@@ -140,7 +151,7 @@ function start() {
     function moveMiniUfo() { //MOVE THE MINIUFO
         let posX_miniUfo =  parseInt($("#miniUfo").css("left"));
 
-        $("#miniUfo").css("left", (posX_miniUfo - speedMiniUfo));
+        $("#miniUfo").css("left", (posX_miniUfo - speed.miniUfo));
         $("#miniUfo").css("top", posY_miniUfo);
 
         if (posX_miniUfo <= 0) {
@@ -153,7 +164,7 @@ function start() {
     function moveRebelTruck() { //MOVE THE REBELTRUCK
         let posX_rebelTruck = parseInt($("#rebelTruck").css("left"));
 
-        $("#rebelTruck").css("left", (posX_rebelTruck - 3));
+        $("#rebelTruck").css("left", (posX_rebelTruck - speed.rebelTruck));
 
         if (posX_rebelTruck <= 0) {
             $("#rebelTruck").css("left", 820);
@@ -163,7 +174,7 @@ function start() {
     function moveMarsMecha() { //MOVE THE MARSMECHA
         let posX_marsMecha = parseInt($("#marsMecha").css("left"));
 
-        $("#marsMecha").css("left", (posX_marsMecha - 3));
+        $("#marsMecha").css("left", (posX_marsMecha - speed.marsMecha));
 
         if (posX_marsMecha <= 0) {
             $("#marsMecha").css("left", 775);
@@ -173,7 +184,7 @@ function start() {
     function movePrisionerOfWar() { //MOVE THE POW
         let posX_pow = parseInt($("#prisionerOfWar").css("left"));
 
-        $("#prisionerOfWar").css("left", (posX_pow + 1));
+        $("#prisionerOfWar").css("left", (posX_pow + speed.pow));
 
         if (posX_pow >= 906) {
             $("#prisionerOfWar").css("left", 0);
@@ -182,7 +193,7 @@ function start() {
 
     function fireMissile() { //MOVE THE MISSILE && CHECK IF FIRING
         if (Firing == false) {
-            soundFiring.play();
+            sounds.firing.play();
             Firing = true;
             
             let posY_flyingTara = parseInt($("#flyingTara").css("top"));
@@ -200,7 +211,7 @@ function start() {
         function firing() {
             let posX_missile = parseInt($("#missile").css("left"));
 
-            $("#missile").css("left", posX_missile + 15);
+            $("#missile").css("left", posX_missile + speed.missile);
 
             if (posX_missile >= 900) {
                 window.clearInterval(timedMissile);
@@ -224,17 +235,19 @@ function start() {
 
     /* --- COLLISION DETECTIONS --- */
     function divCollision() {
-        let collision_flyingTara_miniUfo = ($("#flyingTara").collision($("#miniUfo")));
-        let collision_flyingTara_rebelTruck = ($("#flyingTara").collision($("#rebelTruck")));
-        let collision_flyingTara_marsMecha = ($("#flyingTara").collision($("#marsMecha")));
-        let collision_flyingTara_pow = ($("#flyingTara").collision($("#prisionerOfWar")));
-        let collision_missile_miniUfo = ($("#missile").collision($("#miniUfo")));
-        let collision_missile_rebelTruck = ($("#missile").collision($("#rebelTruck")));
-        let collision_missile_marsMecha = ($("#missile").collision($("#marsMecha")));
-        let collision_pow_rebelTruck = ($("#prisionerOfWar").collision($("#rebelTruck")));
+        let collisions = {
+            flyingTara_miniUfo: ($("#flyingTara").collision($("#miniUfo"))),
+            flyingTara_rebelTruck: ($("#flyingTara").collision($("#rebelTruck"))),
+            flyingTara_marsMecha: ($("#flyingTara").collision($("#marsMecha"))),
+            flyingTara_pow: ($("#flyingTara").collision($("#prisionerOfWar"))),
+            missile_miniUfo: ($("#missile").collision($("#miniUfo"))),
+            missile_rebelTruck: ($("#missile").collision($("#rebelTruck"))),
+            missile_marsMecha: ($("#missile").collision($("#marsMecha"))),
+            pow_rebelTruck: ($("#prisionerOfWar").collision($("#rebelTruck"))),
+            pow_marsMecha: ($("#prisionerOfWar").collision($("#marsMecha")))
+        }
         
-        
-        if (collision_flyingTara_miniUfo.length > 0) { //Collision FlyingTara x MiniUfo
+        if (collisions.flyingTara_miniUfo.length > 0) { //Collision FlyingTara x MiniUfo
             playerEnergy--;
 
             let posX_miniUfo = parseInt($("#miniUfo").css("left"));
@@ -244,17 +257,15 @@ function start() {
             
             miniUfoExplosion(posX_miniUfo, posY_miniUfo);
             flyingTaraExplosion(posX_flyingTara, (posY_flyingTara - 30));
+            
             $("#flyingTara").remove();
-
-            posY_miniUfo = parseInt(Math.random() * 334);
-
-            $("#miniUfo").css("left", 860);
-            $("#miniUfo").css("top", posY_miniUfo);
+            $("#miniUfo").remove();
 
             respawnFlyingTara();
+            respawnMiniUfo();
         }
 
-        if (collision_flyingTara_rebelTruck.length > 0) { //Collision FlyingTara x RebelTruck
+        if (collisions.flyingTara_rebelTruck.length > 0) { //Collision FlyingTara x RebelTruck
             playerEnergy--;
 
             let posX_rebelTruck = parseInt($("#rebelTruck").css("left"));
@@ -264,7 +275,7 @@ function start() {
 
             rebelTruckExplosion(posX_rebelTruck, posY_rebelTruck);
             flyingTaraExplosion(posX_flyingTara, (posY_flyingTara - 40));
-
+            
             $("#flyingTara").remove();
             $("#rebelTruck").remove();
             
@@ -272,7 +283,7 @@ function start() {
             respawnRebelTruck();
         }
 
-        if (collision_flyingTara_marsMecha.length > 0) { //Collision FlyingTara x MarsMecha
+        if (collisions.flyingTara_marsMecha.length > 0) { //Collision FlyingTara x MarsMecha
             playerEnergy--;
 
             let posX_marsMecha = parseInt($("#marsMecha").css("left"));
@@ -282,7 +293,7 @@ function start() {
 
             marsMechaExplosion(posX_marsMecha, (posY_marsMecha + 60));
             flyingTaraExplosion(posX_flyingTara, (posY_flyingTara - 40));
-
+            
             $("#flyingTara").remove();
             $("#marsMecha").remove();
 
@@ -290,8 +301,8 @@ function start() {
             respawnMarsMecha();
         }
 
-        if (collision_flyingTara_pow.length > 0) { //Colisão entre FlyingTara e PrisionerOfWar
-            soundRescuedPow.play();
+        if (collisions.flyingTara_pow.length > 0) { //Colisão entre FlyingTara e PrisionerOfWar
+            sounds.rescuedPow.play();
             RescuedPow++;
 
             $("#prisionerOfWar").remove();
@@ -299,22 +310,21 @@ function start() {
             respawnPow();
         }
 
-        if (collision_missile_miniUfo.length > 0) { //Collison Missile x MiniUfo
+        if (collisions.missile_miniUfo.length > 0) { //Collison Missile x MiniUfo
             score += 100;
-            //vel_Inimigo1 += 0.3;
+            speed.miniUfo += 0.3;
 
             let posX_miniUfo = parseInt($("#miniUfo").css("left"));
             posY_miniUfo = parseInt($("#miniUfo").css("top"));
             miniUfoExplosion(posX_miniUfo, posY_miniUfo);
 
             $("#missile").css("left", -999);
-            
-            posY_miniUfo = parseInt(Math.random() * 334);
-            $("#miniUfo").css("left", 860);
-            $("#miniUfo").css("top", posY_miniUfo);
+            $("#miniUfo").remove();
+
+            respawnMiniUfo();
         }
 
-        if (collision_missile_rebelTruck.length > 0) { //Collision Missile x RebelTruck
+        if (collisions.missile_rebelTruck.length > 0) { //Collision Missile x RebelTruck
             score += 50;
 
             let posX_rebelTruck = parseInt($("#rebelTruck").css("left"));
@@ -327,7 +337,7 @@ function start() {
             respawnRebelTruck();
         }
 
-        if (collision_missile_marsMecha.length > 0) { //Collision Missile x MarsMecha
+        if (collisions.missile_marsMecha.length > 0) { //Collision Missile x MarsMecha
             score += 50;
 
             let posX_marsMecha = parseInt($("#marsMecha").css("left"));
@@ -340,7 +350,19 @@ function start() {
             respawnMarsMecha();
         }
 
-        if (collision_pow_rebelTruck.length > 0) { //Collision PrisionerOfWar x RebelTruck
+        if (collisions.pow_rebelTruck.length > 0) { //Collision PrisionerOfWar x RebelTruck
+            lostPow++;
+
+            let posX_pow = parseInt($("#prisionerOfWar").css("left"));
+            let posY_pow = parseInt($("#prisionerOfWar").css("top"));
+            powDeath(posX_pow, posY_pow);
+
+            $("#prisionerOfWar").remove();
+
+            respawnPow();
+        }
+
+        if (collisions.pow_marsMecha.length > 0) {
             lostPow++;
 
             let posX_pow = parseInt($("#prisionerOfWar").css("left"));
@@ -355,7 +377,7 @@ function start() {
 
     /* --- EXPLOSIONS/DEATH ANIMATIONS --- */
     function flyingTaraExplosion(posX, posY) { //EXPLOSION FOR THE PLAYER AVATAR
-        soundExplosion.play();
+        sounds.explosion.play();
 
         $("#gameBackground").append("<div id='flyingTaraExplosion' class='animaFlyingTaraExplosion'></div>");
 
@@ -373,7 +395,7 @@ function start() {
     }
 
     function miniUfoExplosion(posX, posY) { //EXPLOSION FOR THE MINIUFO
-        soundExplosion.play();
+        sounds.explosion.play();
 
         $("#gameBackground").append("<div id='miniUfoExplosion' class='animaMiniUfoExplosion'></div>");
 
@@ -391,10 +413,10 @@ function start() {
     }
 
     function rebelTruckExplosion(posX, posY) { //EXPLOSION FOR THE REBELTRUCK
-        soundExplosion.play();
+        sounds.explosion.play();
 
         $("#gameBackground").append("<div id='rebelTruckExplosion' class='animaRebelTruckExplosion'></div>");
-        $("#rebelTruckExplosion").css("background-image", "url(../imgs/rebelTruckExplosion2.png)");
+        $("#rebelTruckExplosion").css("background-image", "url(../imgs/rebelTruckExplosion.png)");
         $("#rebelTruckExplosion").css("left", posX);
         $("#rebelTruckExplosion").css("top", posY);
 
@@ -408,7 +430,7 @@ function start() {
     }
 
     function marsMechaExplosion(posX, posY) { //EXPLOSION FOR THE MARSMECHA
-        soundExplosion.play();
+        sounds.explosion.play();
 
         $("#gameBackground").append("<div id='marsMechaExplosion' class='animaMarsMechaExplosion'></div>");
 
@@ -426,7 +448,7 @@ function start() {
     }
 
     function powDeath(posX, posY) { //DEATH OF P.O.W.
-        soundLostPow.play();
+        sounds.lostPow.play();
 
         $("#gameBackground").append("<div id='powDeath' class='animaPowDeath'></div>");
 
@@ -443,7 +465,19 @@ function start() {
         }
     }
 
-    /* --- RESPAWNS --- */
+    /* --- SPAWNS && RESPAWNS --- */
+    /*function spawnBigEyes_1(score) {
+        var timedSpawnBigEyes_1 = window.setInterval(spawn, 1000);
+
+        function spawn() {
+            if (score >= 1000) {
+                $('#bigEyes_1').show();
+                $("#bigEyes_1").css("top", (posY_miniUfo + 50));
+            }
+        }
+        
+    }*/
+
     function respawnFlyingTara() { //RESPAWN FOR THE PLAYER AVATAR
         var timedRespawnFlyingTara = window.setInterval(respawn, 1500);
 
@@ -453,6 +487,24 @@ function start() {
 
             if (gameOver === false) {
                 $("#gameBackground").append("<div id='flyingTara'></div>")
+            }
+        }
+    }
+
+    function respawnMiniUfo() {
+        var timedRespawnMiniUfo = window.setInterval(respawn, 500);
+
+        function respawn() {
+            window.clearInterval(timedRespawnMiniUfo);
+            timedRespawnMiniUfo = null;
+
+            if (gameOver === false) {
+                posY_miniUfo = parseInt(Math.random() * 334);
+
+                $("#gameBackground").append("<div id='miniUfo' class='animaMiniUfo'></div>");
+                $("#miniUfo").css("left", 860);
+                $("#miniUfo").css("top", posY_miniUfo);
+
             }
         }
     }
@@ -507,19 +559,19 @@ function start() {
     /* --- PLAYER ENERGY VERIFICATION --- */
     function energyUpdate() {
         if (playerEnergy === 3) {
-            $("#energyBar").css("background-image", "url(../imgs/newEnergyBar.png)");
+            $("#energyBar").css("background-image", "url(../imgs/EnergyBar_3.png)");
         }
 
         if (playerEnergy === 2) {
-            $("#energyBar").css("background-image", "url(../imgs/newEnergyBar2.png)");
+            $("#energyBar").css("background-image", "url(../imgs/EnergyBar_2.png)");
         }
 
         if (playerEnergy === 1) {
-            $("#energyBar").css("background-image", "url(../imgs/newEnergyBar1.png)");
+            $("#energyBar").css("background-image", "url(../imgs/EnergyBar_1.png)");
         }
 
         if (playerEnergy === 0) {
-            $("#energyBar").css("background-image", "url(../imgs/newEnergyBar0.png)");
+            $("#energyBar").css("background-image", "url(../imgs/EnergyBar_0.png)");
 
             if (score > bestScore) {
                 bestScore = score;
@@ -532,15 +584,18 @@ function start() {
     /* --- END GAME --- */
     function endGame() {
         gameOver = true;
-        soundBackground.pause();
-        soundGameOver.play();
+        sounds.background.pause();
+        sounds.gameOver.play();
 
         window.clearInterval(jogo.timer);
+        //window.clearInterval(timedSpawnBigEyes_1);
         jogo.timer = null;
+        //timedSpawnBigEyes_1 = null;
 
         $("#flyingTara").remove();
         $("#miniUfo").remove();
         $("#rebelTruck").remove();
+        $("#bigEyes_1").remove();
         $("#marsMecha").remove();
         $("#prisionerOfWar").remove();
         $("#energyBar").remove();
@@ -551,7 +606,6 @@ function start() {
         $("#bestScore").remove();
 
         $("#gameBackground").append("<div id='endScreen'></div>");
-
         $("#endScreen").html("<h1> Game Over </h1><p>SCORE</p>" +"<p>" +score
         +"</p>" +"<div id='restartButton' onClick='restartGame()'> RESTART GAME </div>");
     }

@@ -383,27 +383,27 @@
 }
 
 /* NOT USED */
-@keyframes play18 { /* BigEyes_1*/
+@keyframes playBigEyes_1 { /* BigEyes_1*/
     from {background-position: 0px;}
     to {background-position: -814px;}
 }
 
-@-webkit-keyframes play18 {
+@-webkit-keyframes playBigEyes_1 {
     from {background-position: 0px;}
     to {background-position: -814px;}
 }
 
-@-moz-keyframes play18 {
+@-moz-keyframes playBigEyes_1 {
     from {background-position: 0px;}
     to {background-position: -814px;}
 }
 
-@-ms-keyframes play18 {
+@-ms-keyframes playBigEyes_1 {
     from {background-position: 0px;}
     to {background-position: -814px;}
 }
 
-@-o-keyframes play18 {
+@-o-keyframes playBigEyes_1 {
     from {background-position: 0px;}
     to {background-position: -814px;}
 }
