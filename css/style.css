@@ -140,8 +140,8 @@ body {
 
 /* --- CHARACTERS DIVs --- */
 #flyingTara { /* Player Avatar */
-    width: 85px;
-    height: 40px;
+    width: 80px;
+    height: 46px;
     position: absolute;
     left: 20px;
     top: 179px;
@@ -166,21 +166,22 @@ body {
     background-image: url(../imgs/rebelTruck.png);
 }
 
-#bigEyes_1 {
+#bigEyes {
     width: 37px;
     height: 33px;
     position: absolute;
+    background-image: url(../imgs/bigEyes.png);
     left: 860px;
 }
 
-#bigEyes_2 {
+/*#bigEyes_2 {
     width: 34px;
     height: 32px;
     position: absolute;
     left: 689px;
-    top: 150px;
+    top: 350px;
     background-image: url(../imgs/bigEyes_2.png);
-}
+}*/
 
 #marsMecha {
     width: 176px;
@@ -207,8 +208,13 @@ body {
     background-image: url(../imgs/missile.png);
 }
 
-/* --- GUI DIVs --- */
+/*#bigEyes_projectile {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+}*/
 
+/* --- GUI DIVs --- */
 #interface {
     width: 950px;
     height: 60px;
@@ -342,6 +348,12 @@ body {
 #marsMechaExplosion {
     width: 108px;
     height: 118px;
+    position: absolute;
+}
+
+#bigEyesExplosion {
+    width: 46px;
+    height: 46px;
     position: absolute;
 }
 

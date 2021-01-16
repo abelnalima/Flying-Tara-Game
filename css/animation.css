@@ -19,26 +19,6 @@
     -o-animation: playRebelTruck .5s steps(4) infinite;
 }
 
-.animaBigEyes_1 {
-    background-image: url(../imgs/bigEyes_1.png);
-    animation: playBigEyes_1 .7s steps(22) infinite;
-
-    -webkit-animation: playBigEyes_1 .7s steps(22) infinite;
-    -moz-animation: playBigEyes_1 .7s steps(22) infinite;
-    -ms-animation: playBigEyes_1 .7s steps(22) infinite;
-    -o-animation: playBigEyes_1 .7s steps(22) infinite;
-}
-
-.animaBigEyes_2 {
-    background-image: url(../imgs/bigEyes_2.png);
-    animation: playBigEyes_2 .9s steps(16) infinite;
-
-    -webkit-animation: playBigEyes_2 .9s steps(16) infinite;
-    -moz-animation: playBigEyes_2 .9s steps(16) infinite;
-    -ms-animation: playBigEyes_2 .9s steps(16) infinite;
-    -o-animation: playBigEyes_2 .9s steps(16) infinite;
-}
-
 .animaMarsMecha {
     background-image: url(../imgs/marsMecha.png);
     animation: playMarsMecha .9s steps(8) infinite;
@@ -48,6 +28,26 @@
     -ms-animation: playMarsMecha .9s steps(8) infinite;
     -o-animation: playMarsMecha .9s steps(8) infinite;
 }
+
+.animaBigEyes {
+    background-image: url(../imgs/bigEyes.png);
+    animation: playBigEyes .7s steps(22) infinite;
+
+    -webkit-animation: playBigEyes .7s steps(22) infinite;
+    -moz-animation: playBigEyes .7s steps(22) infinite;
+    -ms-animation: playBigEyes .7s steps(22) infinite;
+    -o-animation: playBigEyes .7s steps(22) infinite;
+}
+
+/*.animaBigEyes_2 {
+    background-image: url(../imgs/bigEyes_2.png);
+    animation: playBigEyes_2 .9s steps(16) infinite;
+
+    -webkit-animation: playBigEyes_2 .9s steps(16) infinite;
+    -moz-animation: playBigEyes_2 .9s steps(16) infinite;
+    -ms-animation: playBigEyes_2 .9s steps(16) infinite;
+    -o-animation: playBigEyes_2 .9s steps(16) infinite;
+}*/
 
 .animaPow {
     background-image: url(../imgs/pow.png);
@@ -116,6 +116,18 @@
     -moz-animation: playMarsMechaExplosion .9s steps(21) infinite;
     -ms-animation: playMarsMechaExplosion .9s steps(21) infinite;
     -o-animation: playMarsMechaExplosion .9s steps(21) infinite;
+}
+
+.animaBigEyesExplosion {
+    width: 46px;
+    height: 46px;
+    background-image: url(../imgs/bigEyesExplosion.png);
+    animation: playBigEyesExplosion .9s steps(5) infinite;
+
+    -webkit-animation: playBigEyesExplosion .9s steps(5) infinite;
+    -moz-animation: playBigEyesExplosion .9s steps(5) infinite;
+    -ms-animation: playBigEyesExplosion .9s steps(5) infinite;
+    -o-animation: playBigEyesExplosion .9s steps(5) infinite;
 }
 
 .animaPowDeath {
@@ -204,6 +216,31 @@
 @-o-keyframes playMarsMecha {
     from {background-position: 0px;}
     to {background-position: -1408px;}
+}
+
+@keyframes playBigEyes { /* BigEyes_1*/
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-webkit-keyframes playBigEyes {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-moz-keyframes playBigEyes {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-ms-keyframes playBigEyes {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
+}
+
+@-o-keyframes playBigEyes {
+    from {background-position: 0px;}
+    to {background-position: -814px;}
 }
 
 @keyframes playMissile {
@@ -357,6 +394,31 @@
     to {background-position: -2268px;}
 }
 
+@keyframes playBigEyesExplosion {
+    from {background-position: 0px;}
+    to {background-position: -230px;}
+}
+
+@-webkit-keyframes playBigEyesExplosion {
+    from {background-position: 0px;}
+    to {background-position: -230px;}
+}
+
+@-moz-keyframes playBigEyesExplosion {
+    from {background-position: 0px;}
+    to {background-position: -230px;}
+}
+
+@-ms-keyframes playBigEyesExplosion {
+    from {background-position: 0px;}
+    to {background-position: -230px;}
+}
+
+@-o-keyframes playBigEyesExplosion {
+    from {background-position: 0px;}
+    to {background-position: -230px;}
+}
+
 @keyframes playPowDeath {
     from {background-position: 0px;}
     to {background-position: -400px;}
@@ -383,31 +445,6 @@
 }
 
 /* NOT USED */
-@keyframes playBigEyes_1 { /* BigEyes_1*/
-    from {background-position: 0px;}
-    to {background-position: -814px;}
-}
-
-@-webkit-keyframes playBigEyes_1 {
-    from {background-position: 0px;}
-    to {background-position: -814px;}
-}
-
-@-moz-keyframes playBigEyes_1 {
-    from {background-position: 0px;}
-    to {background-position: -814px;}
-}
-
-@-ms-keyframes playBigEyes_1 {
-    from {background-position: 0px;}
-    to {background-position: -814px;}
-}
-
-@-o-keyframes playBigEyes_1 {
-    from {background-position: 0px;}
-    to {background-position: -814px;}
-}
-
 @keyframes play20 { /* BigEyes_2*/
     from {background-position: 0px;}
     to {background-position: -544px;}
