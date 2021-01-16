@@ -51,22 +51,23 @@ function start() {
 
     /* --- SOUNDS --- */
     var sounds = {
-        firing: document.getElementById("somDisparo"),
-        explosion: document.getElementById("somExplosao"),
-        background: document.getElementById("somFundo"),
         gameOver: document.getElementById("somGameOver"),
         lostPow: document.getElementById("somPerdido"),
-        rescuedPow: document.getElementById("somResgate")
+        rescuedPow: document.getElementById("somResgate"),
+        stage: document.getElementById("somStage"),
+        missile: document.getElementById("somMissile"),
+        explosionLittle: document.getElementById("somExplosionLittle"),
+        explosionBig: document.getElementById("somExplosionBig")
     }
 
-    sounds.background.addEventListener("ended", function() {
-        sounds.background.currentTime = 0;
-        sounds.background.play();
+    sounds.stage.addEventListener("ended", function() {
+        sounds.stage.currentTime = 0;
+        sounds.stage.play();
     }, false);
     
     sounds.gameOver.pause(); //Pausa a execução ao dar RESTART GAME
     sounds.gameOver.currentTime = 0; //Reinicia o som
-    sounds.background.play();
+    sounds.stage.play();
 
     /* --- KEY PRESSED VERIFICATION --- */
     $(document).keydown(function(e) {
@@ -208,7 +209,7 @@ function start() {
 
     function fireMissile() { //MOVE THE MISSILE && CHECK IF FIRING
         if (isFiring == false) {
-            sounds.firing.play();
+            sounds.missile.play();
             isFiring = true;
             
             let posY_flyingTara = parseInt($("#flyingTara").css("top"));
@@ -438,7 +439,8 @@ function start() {
 
     /* --- EXPLOSIONS/DEATH ANIMATIONS --- */
     function flyingTaraExplosion(posX, posY) { //EXPLOSION FOR THE PLAYER AVATAR
-        sounds.explosion.play();
+        //sounds.explosion.play();
+        sounds.explosionLittle.play();
 
         $("#gameBackground").append("<div id='flyingTaraExplosion' class='animaFlyingTaraExplosion'></div>");
 
@@ -456,7 +458,8 @@ function start() {
     }
 
     function miniUfoExplosion(posX, posY) { //EXPLOSION FOR THE MINIUFO
-        sounds.explosion.play();
+        //sounds.explosion.play();
+        sounds.explosionLittle.play();
 
         $("#gameBackground").append("<div id='miniUfoExplosion' class='animaMiniUfoExplosion'></div>");
 
@@ -491,7 +494,8 @@ function start() {
     }*/
 
     function marsMechaExplosion(posX, posY) { //EXPLOSION FOR THE MARSMECHA
-        sounds.explosion.play();
+        //sounds.explosion.play();
+        sounds.explosionBig.play();
 
         $("#gameBackground").append("<div id='marsMechaExplosion' class='animaMarsMechaExplosion'></div>");
 
@@ -509,7 +513,8 @@ function start() {
     }
 
     function bigEyesExplosion(posX, posY) {
-        sounds.explosion.play();
+        //sounds.explosion.play();
+        sounds.explosionLittle.play();
 
         $("#gameBackground").append("<div id='bigEyesExplosion' class='animaBigEyesExplosion'></div>");
 
@@ -684,7 +689,7 @@ function start() {
     /* --- END GAME --- */
     function endGame() {
         gameOver = true;
-        sounds.background.pause();
+        sounds.stage.pause();
         sounds.gameOver.play();
 
         window.clearInterval(jogo.timer);
@@ -696,16 +701,9 @@ function start() {
         $("#bigEyes").remove();
         $("#marsMecha").remove();
         $("#prisionerOfWar").remove();
-        $("#energyBar").remove();
-        $("#interface").remove();
-        $("#savedPow").remove();
-        $("#lostPow").remove();
-        $("#playerScore").remove();
-        $("#bestScore").remove();
 
         $("#gameBackground").append("<div id='endScreen'></div>");
-        $("#endScreen").html("<h1> Game Over </h1><p>SCORE</p>" +"<p>" +score
-        +"</p>" +"<div id='restartButton' onClick='restartGame()'> RESTART GAME </div>");
+        $("#endScreen").html("<h1> Game Over </h1>" + "<div id='restartButton' onClick='restartGame()'> RESTART GAME </div>");
     }
 
 }
@@ -713,6 +711,12 @@ function start() {
 /* --- RESTART GAME --- */
 function restartGame() {
     $("#endScreen").remove();
+    $("#energyBar").remove();
+    $("#interface").remove();
+    $("#savedPow").remove();
+    $("#lostPow").remove();
+    $("#playerScore").remove();
+    $("#bestScore").remove();
     
     start();
 }
