@@ -3,51 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Flying Tara </title>
-    <!-- CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/animation.css">
+    <title>Flying Tara</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/animation.css">
 </head>
 
 <body>
     <div id="container">
         <div id="gameBackground">
 
-                <div id="nameLogo">
-                    <p> FLYING TARA</p>
-                    <p> THE LAST MISSION </p>
-                </div>
-    
-                <div id="howToPlay">
-                    <p> Arrow UP: movimenta para cima. </p>
-                    <p> Arrow DOWN: movimenta para baixo. </p>
-                    <p> Arrow LEFT: movimenta para esquerda. </p>
-                    <p> Arrow RIGHT: movimenta para direita. </p>
-                    <p> D: disparar míssel. </p>
-                </div>
-    
-                <div id="start" onclick="start()">
-                    START GAME
-                </div>
+            <div id="nameLogo">
+                <p> FLYING TARA </p>
+                <p> THE LAST MISSION </p>
+            </div>
+
+            <div id="howToPlay">
+                <p> Arrow UP: movimenta para cima. </p>
+                <p> Arrow DOWN: movimenta para baixo. </p>
+                <p> Arrow LEFT: movimenta para esquerda. </p>
+                <p> Arrow RIGHT: movimenta para direita. </p>
+                <p> D: disparar míssel. </p>
+            </div>
+
+            <div id="startButton" onclick="start()">
+                START GAME
+            </div>
         </div>
-    </div>
+    </div>    
 
     <!-- SOUNDS -->
-    <audio src="../sons/som.mp3" preload="auto" id="somDisparo"></audio>
-    <audio src="../sons/explosao.mp3" preload="auto" id="somExplosao"></audio>
-    <audio src="../sons/musica.mp3" preload="auto" id="somFundo"></audio>
-    <audio src="../sons/gameover.mp3" preload="auto" id="somGameOver"></audio>
-    <audio src="../sons/perdido.mp3" preload="auto" id="somPerdido"></audio>
-    <audio src="../sons/resgate.mp3" preload="auto" id="somResgate"></audio>
-    <audio src="../sons/stage.mp3" preload="auto" id="somStage"></audio>
-    <audio src="../sons/missile.mp3" preload="auto" id="somMissile"></audio>
-    <audio src="../sons/explosionLittle.mp3" preload="auto" id="somExplosionLittle"></audio>
-    <audio src="../sons/explosionBig.mp3" preload="auto" id="somExplosionBig"></audio>
+    <audio src="../sons/gameover.mp3" preload="auto" id="soundGameOver"></audio>
+    <audio src="../sons/perdido.mp3" preload="auto" id="soundLostPow"></audio>
+    <audio src="../sons/resgate.mp3" preload="auto" id="soundSavedPow"></audio>
+    <audio src="../sons/stage.mp3" preload="auto" id="soundStage"></audio>
+    <audio src="../sons/missile.mp3" preload="auto" id="soundMissile"></audio>
+    <audio src="../sons/explosionLittle.mp3" preload="auto" id="soundExplosion"></audio>
+    <audio src="../sons/explosionBig.mp3" preload="auto" id="soundExplosionBig"></audio>
 
     <!-- SCRIPTS -->
     <script src="../jquery/jquery-1.11.1.min.js"></script>
     <script src="../jquery/jquery-collision.min.js"></script>
     <script src="../js/main.js"></script>
-    
+
 </body>
 </html>
